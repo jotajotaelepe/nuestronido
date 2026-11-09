@@ -1,0 +1,76 @@
+{%- doc -%}
+  Nuestro Nido mega menu promo. Looks up the 4 promo slots on the header menu block
+  and renders the one whose "menu item" matches this top-level link's title.
+
+  Styles (Figma "01 · Menú principal · Estados"):
+  - card: image (rounded 12px), eyebrow (Meta, taupe), heading (H4), text (Body S, gris-600)
+  - panel: cream box with heading (H4), text lines and an optional dark pill button
+
+  @param {object} link - The top-level menu link.
+  @param {object} block_settings - Settings of the _header-menu block.
+
+  @example
+  {% render 'nn-mega-promo', link: link, block_settings: block.settings %}
+{%- enddoc -%}
+
+{%- liquid
+  assign nn_title = link.title | downcase | strip
+  assign nn_slot = ''
+  for i in (1..4)
+    assign nn_key = 'nn_promo_' | append: i | append: '_menu_item'
+    assign nn_match = block_settings[nn_key] | downcase | strip
+    if nn_match != blank and nn_match == nn_title
+      assign nn_slot = 'nn_promo_' | append: i | append: '_'
+      break
+    endif
+  endfor
+
+  assign k_style = nn_slot | append: 'style'
+  assign k_image = nn_slot | append: 'image'
+  assign k_eyebrow = nn_slot | append: 'eyebrow'
+  assign k_heading = nn_slot | append: 'heading'
+  assign k_text = nn_slot | append: 'text'
+  assign k_button = nn_slot | append: 'button_label'
+  assign k_link = nn_slot | append: 'link'
+
+  assign p_style = block_settings[k_style] | default: 'card'
+  assign p_image = block_settings[k_image]
+  assign p_eyebrow = block_settings[k_eyebrow]
+  assign p_heading = block_settings[k_heading]
+  assign p_text = block_settings[k_text]
+  assign p_button = block_settings[k_button]
+  assign p_link = block_settings[k_link]
+-%}
+
+{%- if nn_slot != blank -%}
+<div class="nn-mega-promo nn-mega-promo--{{ p_style }}">
+  {%- if p_style == 'card' -%}
+    {%- if p_link != blank -%}<a href="{{ p_link }}" class="nn-mega-promo__link">{%- endif -%}
+    <div class="nn-mega-promo__media">
+      {%- if p_image != blank -%}
+        {{ p_image | image_url: width: 640 | image_tag: loading: 'lazy', sizes: '320px', widths: '320, 480, 640', alt: p_image.alt | default: p_heading }}
+      {%- endif -%}
+    </div>
+    {%- if p_eyebrow != blank -%}
+      <p class="nn-mega-promo__eyebrow">{{ p_eyebrow }}</p>
+    {%- endif -%}
+    {%- if p_heading != blank -%}
+      <p class="nn-mega-promo__heading">{{ p_heading }}</p>
+    {%- endif -%}
+    {%- if p_text != blank -%}
+      <div class="nn-mega-promo__text">{{ p_text }}</div>
+    {%- endif -%}
+    {%- if p_link != blank -%}</a>{%- endif -%}
+  {%- else -%}
+    {%- if p_heading != blank -%}
+      <p class="nn-mega-promo__heading">{{ p_heading }}</p>
+    {%- endif -%}
+    {%- if p_text != blank -%}
+      <div class="nn-mega-promo__text">{{ p_text }}</div>
+    {%- endif -%}
+    {%- if p_button != blank -%}
+      <a href="{{ p_link | default: '#' }}" class="nn-button nn-button--dark">{{ p_button }}</a>
+    {%- endif -%}
+  {%- endif -%}
+</div>
+{%- endif -%}

@@ -55,6 +55,10 @@
     {% endif %}
     data-testid="header-logo"
   >
+    {%- comment -%} Nuestro Nido: built-in SVG wordmark until a logo image is uploaded {%- endcomment -%}
+    {%- if settings.logo == blank -%}
+      {% render 'nn-logo', variant: 'wordmark', class: 'header-logo__image nn-header-logo', label: alt_text_fallback %}
+    {%- else -%}
     {% render 'image',
       image: settings.logo,
       class: 'header-logo__image',
@@ -63,6 +67,7 @@
       text_fallback: shop.name,
       style: logo_style
     %}
+    {%- endif -%}
   </span>
 
   {% if use_inverse_logo %}

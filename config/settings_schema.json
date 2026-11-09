@@ -1098,6 +1098,186 @@
     ]
   },
   {
+    "name": "Nuestro Nido",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Brand tokens from the Nuestro Nido Figma file. Colors live in Colors → palette: color1 verde, color2 mantequilla, color3 crema, color4 taupe, color5 gris-600, color6 línea."
+      },
+      {
+        "type": "header",
+        "content": "Brand font"
+      },
+      {
+        "type": "checkbox",
+        "id": "nn_brand_font",
+        "label": "Use Basis Grotesque Pro (self-hosted)",
+        "default": true,
+        "info": "Uses the licensed WOFF2 files in assets. Off: falls back to the body font picked in Typography."
+      },
+      {
+        "type": "header",
+        "content": "Type scale (desktop / mobile)"
+      },
+      {
+        "type": "range",
+        "id": "nn_size_display",
+        "label": "Display headline",
+        "min": 48,
+        "max": 160,
+        "step": 4,
+        "unit": "px",
+        "default": 120
+      },
+      {
+        "type": "range",
+        "id": "nn_size_display_mobile",
+        "label": "Display headline, mobile",
+        "min": 24,
+        "max": 80,
+        "step": 2,
+        "unit": "px",
+        "default": 44
+      },
+      {
+        "type": "range",
+        "id": "nn_size_h1",
+        "label": "H1",
+        "min": 24,
+        "max": 96,
+        "step": 2,
+        "unit": "px",
+        "default": 64
+      },
+      {
+        "type": "range",
+        "id": "nn_size_h1_mobile",
+        "label": "H1, mobile",
+        "min": 20,
+        "max": 64,
+        "step": 2,
+        "unit": "px",
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "nn_size_h2",
+        "label": "H2",
+        "min": 20,
+        "max": 72,
+        "step": 2,
+        "unit": "px",
+        "default": 40,
+        "info": "Not defined in Figma; proposed between H1 and H3."
+      },
+      {
+        "type": "range",
+        "id": "nn_size_h2_mobile",
+        "label": "H2, mobile",
+        "min": 18,
+        "max": 48,
+        "step": 2,
+        "unit": "px",
+        "default": 28
+      },
+      {
+        "type": "range",
+        "id": "nn_size_h3",
+        "label": "H3",
+        "min": 14,
+        "max": 48,
+        "step": 1,
+        "unit": "px",
+        "default": 26
+      },
+      {
+        "type": "range",
+        "id": "nn_size_h3_mobile",
+        "label": "H3, mobile",
+        "min": 14,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "default": 22
+      },
+      {
+        "type": "range",
+        "id": "nn_size_h4",
+        "label": "H4",
+        "min": 12,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "nn_size_h4_mobile",
+        "label": "H4, mobile",
+        "min": 12,
+        "max": 32,
+        "step": 1,
+        "unit": "px",
+        "default": 18
+      },
+      {
+        "type": "header",
+        "content": "Spacing"
+      },
+      {
+        "type": "range",
+        "id": "nn_page_gutter",
+        "label": "Page gutter",
+        "min": 16,
+        "max": 80,
+        "step": 4,
+        "unit": "px",
+        "default": 48
+      },
+      {
+        "type": "range",
+        "id": "nn_page_gutter_mobile",
+        "label": "Page gutter, mobile",
+        "min": 8,
+        "max": 32,
+        "step": 2,
+        "unit": "px",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "nn_max_content_width",
+        "label": "Max content width",
+        "min": 960,
+        "max": 1760,
+        "step": 16,
+        "unit": "px",
+        "default": 1344
+      },
+      {
+        "type": "range",
+        "id": "nn_section_spacing",
+        "label": "Section spacing",
+        "min": 48,
+        "max": 160,
+        "step": 8,
+        "unit": "px",
+        "default": 96,
+        "info": "Vertical space between sections. Use the nn-section-spacing class or var(--nn-section-spacing)."
+      },
+      {
+        "type": "range",
+        "id": "nn_section_spacing_mobile",
+        "label": "Section spacing, mobile",
+        "min": 24,
+        "max": 96,
+        "step": 8,
+        "unit": "px",
+        "default": 56
+      }
+    ]
+  },
+  {
     "name": "t:names.page_layout",
     "settings": [
       {

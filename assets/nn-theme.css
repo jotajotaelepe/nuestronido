@@ -1,0 +1,573 @@
+/*
+ * Nuestro Nido · theme layer on top of Horizon
+ * Tokens come from snippets/nn-tokens.liquid. Keep Horizon files untouched where possible;
+ * brand styling lives here so Horizon updates can still be merged.
+ *
+ * Breakpoints (Horizon): mobile < 750px, tablet 750–989px, desktop >= 990px.
+ */
+
+/* ───────────────────────── Base ───────────────────────── */
+
+body {
+  letter-spacing: var(--nn-tracking-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.nn-section-spacing {
+  padding-block: var(--nn-section-spacing);
+}
+
+.nn-display {
+  font-family: var(--font-heading--family);
+  font-weight: 400;
+  font-size: var(--nn-font-size-display);
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+.nn-badge {
+  font-family: var(--nn-font-meta);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: var(--nn-tracking-badge);
+  text-transform: uppercase;
+}
+
+.nn-meta {
+  font-family: var(--nn-font-meta);
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+/* Buttons: Figma "Botón" (Primario verde, Contorno, Oscuro, Suave) */
+.button,
+.button-secondary,
+.nn-button {
+  font-family: var(--nn-font-brand);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: var(--nn-tracking-button);
+  min-height: var(--nn-tap-target);
+}
+
+.nn-button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--button-padding-block) var(--button-padding-inline);
+  border-radius: var(--nn-radius-pill);
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.nn-button--primary { background: var(--nn-color-verde); color: var(--nn-color-blanco); }
+.nn-button--outline { background: transparent; color: var(--nn-color-tinta); border-color: var(--nn-color-tinta); }
+.nn-button--dark { background: var(--nn-color-tinta); color: var(--nn-color-blanco); }
+.nn-button--soft { background: var(--nn-color-crema); color: var(--nn-color-tinta); }
+
+.nn-button--primary:hover { background: color-mix(in srgb, var(--nn-color-verde) 88%, black); }
+.nn-button--dark:hover { background: color-mix(in srgb, var(--nn-color-tinta) 85%, white); }
+.nn-button--outline:hover { background: var(--nn-color-tinta); color: var(--nn-color-blanco); }
+
+/* ───────────────────── Announcement bar ───────────────────── */
+/* Desktop: all messages in one row (Figma). Mobile/tablet: Horizon's rotating slider. */
+
+.announcement-bar__text {
+  font-family: var(--nn-font-brand);
+  font-size: 0.875rem;
+  line-height: 1.2;
+  letter-spacing: var(--nn-tracking-nav);
+}
+
+@media screen and (min-width: 990px) {
+  .announcement-bar__slider slideshow-arrows {
+    display: none;
+  }
+
+  .announcement-bar__slides {
+    display: flex;
+    justify-content: center;
+    gap: 96px;
+    width: 100%;
+    max-width: none;
+  }
+
+  .announcement-bar__slides > .announcement-bar__slide,
+  .announcement-bar__slides > .announcement-bar__slide[aria-hidden='true'] {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* ───────────────────────── Header ───────────────────────── */
+
+.nn-header-logo {
+  display: block;
+  width: auto;
+  height: var(--header-logo-image-height, 21px);
+  color: var(--nn-color-tinta);
+}
+
+.nn-header-logo.nn-logo--wordmark {
+  height: 21px;
+  width: 206px;
+}
+
+@media screen and (max-width: 749px) {
+  .nn-header-logo.nn-logo--wordmark {
+    height: 18px;
+    width: 177px;
+  }
+}
+
+.header .menu-list__link {
+  font-family: var(--nn-font-brand);
+  font-size: 0.875rem;
+  letter-spacing: var(--nn-tracking-nav);
+}
+
+/* Mega menu panel (Figma B–E) */
+.header .menu-list__submenu {
+  border-block-end: 1px solid var(--nn-color-linea);
+  box-shadow: var(--nn-shadow-menu);
+}
+
+.header .mega-menu {
+  padding-block: 40px 48px;
+}
+
+.header .mega-menu__link {
+  font-family: var(--nn-font-brand);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: var(--nn-tracking-body);
+  color: var(--nn-color-tinta);
+  padding-block: 0;
+}
+
+.header .mega-menu__link:hover {
+  color: var(--nn-color-verde);
+}
+
+.header .mega-menu__link--parent {
+  font-family: var(--nn-font-meta);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: var(--nn-tracking-badge);
+  text-transform: uppercase;
+  color: var(--nn-color-taupe);
+  margin-block-end: 14px;
+}
+
+.header .mega-menu__list .list-unstyled li + li {
+  margin-block-start: 14px;
+}
+
+/* Links last in a column ("Todos los espacios →") read as Medium in Figma */
+.header .mega-menu__list .list-unstyled li:last-child .mega-menu__link:is([href*='/collections'], [href*='/pages']) {
+  font-weight: 500;
+}
+
+@media screen and (min-width: 990px) {
+  .header .mega-menu__grid:has(> .nn-mega-promo) {
+    display: flex;
+    align-items: flex-start;
+    gap: 64px;
+  }
+
+  .header .mega-menu__grid:has(> .nn-mega-promo) > .mega-menu__list {
+    display: flex;
+    flex: 1 1 auto;
+    gap: 64px;
+  }
+
+  .header .mega-menu__grid:has(> .nn-mega-promo) .mega-menu__column {
+    flex: 0 0 auto;
+  }
+}
+
+/* Promo card / panel */
+.nn-mega-promo {
+  flex: 0 0 320px;
+  margin-inline-start: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--nn-color-tinta);
+}
+
+.nn-mega-promo__link {
+  display: contents;
+  color: inherit;
+  text-decoration: none;
+}
+
+.nn-mega-promo__media {
+  aspect-ratio: 320 / 190;
+  border-radius: var(--nn-radius-card);
+  background: var(--nn-color-placeholder);
+  overflow: hidden;
+}
+
+.nn-mega-promo__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.nn-mega-promo__eyebrow {
+  margin: 0;
+  font-family: var(--nn-font-meta);
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--nn-color-taupe);
+}
+
+.nn-mega-promo__heading {
+  margin: 0;
+  font-family: var(--nn-font-brand);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+}
+
+.nn-mega-promo__text,
+.nn-mega-promo__text p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--nn-color-gris-600);
+}
+
+.nn-mega-promo--card .nn-mega-promo__media + .nn-mega-promo__eyebrow,
+.nn-mega-promo--card .nn-mega-promo__media + .nn-mega-promo__heading {
+  margin-block-start: 0;
+}
+
+.nn-mega-promo--panel {
+  background: var(--nn-color-crema);
+  border-radius: var(--nn-radius-card);
+  padding: 24px;
+  gap: 12px;
+}
+
+.nn-mega-promo--panel .nn-mega-promo__text p + p {
+  margin-block-start: 10px;
+}
+
+.nn-mega-promo--panel .nn-mega-promo__text {
+  color: var(--nn-color-tinta);
+}
+
+.nn-mega-promo--panel .nn-button {
+  align-self: flex-start;
+  margin-block-start: 4px;
+}
+
+/* The promo is desktop-only; the mobile drawer keeps Horizon's drill-down list. */
+@media screen and (max-width: 989px) {
+  .nn-mega-promo {
+    display: none;
+  }
+}
+
+/* Cart count "(0)" style next to the cart icon */
+.header .cart-bubble__text {
+  font-family: var(--nn-font-brand);
+}
+
+/* ───────────────────────── Footer ───────────────────────── */
+
+.nn-footer {
+  background: var(--nn-footer-bg, var(--nn-color-taupe));
+  color: var(--nn-footer-fg, var(--nn-color-blanco));
+}
+
+.nn-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nn-footer a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.nn-footer__inner {
+  max-width: calc(var(--nn-max-content-width) + var(--nn-page-gutter) * 2);
+  margin-inline: auto;
+  padding: 56px var(--nn-page-gutter) 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+}
+
+.nn-footer__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.nn-footer__isotipo {
+  display: block;
+  width: 218px;
+  height: auto;
+  color: currentColor;
+}
+
+.nn-footer__newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 380px;
+  max-width: 100%;
+}
+
+.nn-footer__newsletter-heading {
+  margin: 0;
+  font-family: var(--nn-font-brand);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  color: inherit;
+}
+
+.nn-footer__newsletter-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.nn-footer__form {
+  margin: 0;
+}
+
+.nn-footer__field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  padding: 6px 6px 6px 20px;
+  border: 1px solid currentColor;
+  border-radius: var(--nn-radius-pill);
+}
+
+.nn-footer__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 14px;
+  letter-spacing: var(--nn-tracking-body);
+  outline: none;
+}
+
+.nn-footer__input::placeholder {
+  color: inherit;
+  opacity: 1;
+}
+
+.nn-footer__field:focus-within {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.nn-footer__submit {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 20px;
+  background: var(--nn-footer-fg, #fff);
+  color: var(--nn-footer-bg, var(--nn-color-taupe));
+  cursor: pointer;
+  padding: 0;
+}
+
+.nn-footer__form-message {
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+.nn-footer__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.nn-footer__social li + li::before {
+  content: '·';
+  padding-inline: 8px;
+}
+
+.nn-footer__columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.nn-footer__column-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+  margin-block-end: 26px;
+  cursor: default;
+}
+
+.nn-footer__column-heading::-webkit-details-marker {
+  display: none;
+}
+
+.nn-footer__chevron {
+  display: none;
+}
+
+.nn-footer__column-body ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+}
+
+.nn-footer__column-body,
+.nn-footer__rte p {
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.nn-footer__rte p {
+  margin: 0;
+}
+
+.nn-footer__rte p + p {
+  margin-block-start: 10px;
+}
+
+.nn-footer__legal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding-block-start: 24px;
+  border-block-start: 1px solid currentColor;
+  font-family: var(--nn-font-meta);
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.nn-footer__legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin: 0;
+}
+
+.nn-footer__payments {
+  margin: 0;
+  white-space: pre;
+}
+
+/* Tablet: columns wrap to 3 per row */
+@media screen and (max-width: 989px) {
+  .nn-footer__columns {
+    flex-wrap: wrap;
+    row-gap: 40px;
+  }
+
+  .nn-footer__column {
+    flex: 0 0 calc((100% - 64px) / 3);
+  }
+}
+
+/* Mobile: newsletter first, columns as accordions, payments last */
+@media screen and (max-width: 749px) {
+  .nn-footer__inner {
+    padding-block: 40px 24px;
+    gap: 40px;
+  }
+
+  .nn-footer__top {
+    flex-direction: column-reverse;
+    gap: 40px;
+  }
+
+  .nn-footer__isotipo {
+    width: 120px;
+  }
+
+  .nn-footer__newsletter {
+    width: 100%;
+  }
+
+  .nn-footer__columns {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nn-footer__column {
+    flex: none;
+    border-block-end: 1px solid color-mix(in srgb, currentColor 40%, transparent);
+  }
+
+  .nn-footer__column-heading {
+    min-height: var(--nn-tap-target);
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .nn-footer__chevron {
+    display: block;
+    transition: transform 0.2s ease;
+  }
+
+  .nn-footer__column[open] .nn-footer__chevron {
+    transform: rotate(180deg);
+  }
+
+  .nn-footer__column-body {
+    padding-block-end: 16px;
+  }
+
+  .nn-footer__column-body a {
+    display: inline-block;
+    padding-block: 4px;
+  }
+
+  .nn-footer__legal {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nn-footer__legal-links {
+    gap: 8px 20px;
+  }
+
+  .nn-footer__payments {
+    white-space: normal;
+  }
+}

@@ -1,0 +1,154 @@
+{%- doc -%}
+  Nuestro Nido design tokens. Rendered in <head> right after Horizon's
+  theme-styles-variables and color-palette, so these values win over Horizon's defaults.
+
+  Source of truth: Figma variables on the "Componentes · Nuestro Nido UI" sheet.
+  Colors read from the theme color palette (Theme settings → Colors) with the Figma hex as fallback.
+  Type sizes and spacing read from Theme settings → Nuestro Nido.
+{%- enddoc -%}
+
+{%- liquid
+  assign nn_font_regular = 'basis-grotesque-pro-regular.woff2' | asset_url
+  assign nn_font_medium = 'basis-grotesque-pro-medium.woff2' | asset_url
+
+-%}
+
+{%- if settings.nn_brand_font -%}
+  {{ nn_font_regular | preload_tag: as: 'font', type: 'font/woff2', crossorigin: true }}
+  {{ nn_font_medium | preload_tag: as: 'font', type: 'font/woff2', crossorigin: true }}
+{%- endif -%}
+
+{%- capture nn_fluid_h1 -%}{%- render 'nn-fluid-size', min: settings.nn_size_h1_mobile, max: settings.nn_size_h1 -%}{%- endcapture -%}
+{%- capture nn_fluid_h2 -%}{%- render 'nn-fluid-size', min: settings.nn_size_h2_mobile, max: settings.nn_size_h2 -%}{%- endcapture -%}
+{%- capture nn_fluid_h3 -%}{%- render 'nn-fluid-size', min: settings.nn_size_h3_mobile, max: settings.nn_size_h3 -%}{%- endcapture -%}
+{%- capture nn_fluid_h4 -%}{%- render 'nn-fluid-size', min: settings.nn_size_h4_mobile, max: settings.nn_size_h4 -%}{%- endcapture -%}
+{%- capture nn_fluid_display -%}{%- render 'nn-fluid-size', min: settings.nn_size_display_mobile, max: settings.nn_size_display -%}{%- endcapture -%}
+{%- capture nn_fluid_section -%}{%- render 'nn-fluid-size', min: settings.nn_section_spacing_mobile, max: settings.nn_section_spacing -%}{%- endcapture -%}
+
+{% style %}
+  {%- if settings.nn_brand_font -%}
+    @font-face {
+      font-family: 'Basis Grotesque Pro';
+      src: url('{{ nn_font_regular }}') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Basis Grotesque Pro';
+      src: url('{{ nn_font_medium }}') format('woff2');
+      font-weight: 500 700;
+      font-style: normal;
+      font-display: swap;
+    }
+  {%- endif -%}
+
+  :root {
+    /* ── Brand colors (Figma: marca/*, neutro/*) ───────────────────────── */
+    --nn-color-verde: {{ settings.color_palette.color1 | default: '#19751D' }};
+    --nn-color-mantequilla: {{ settings.color_palette.color2 | default: '#F3EFA8' }};
+    --nn-color-crema: {{ settings.color_palette.color3 | default: '#FAF8E1' }};
+    --nn-color-taupe: {{ settings.color_palette.color4 | default: '#938067' }};
+    --nn-color-tinta: {{ settings.color_palette.foreground | default: '#1A1A1A' }};
+    --nn-color-blanco: {{ settings.color_palette.background | default: '#FFFFFF' }};
+    --nn-color-gris-600: {{ settings.color_palette.color5 | default: '#737373' }};
+    --nn-color-gris-400: #A9A9A9;
+    --nn-color-gris-300: #C1C1C1;
+    --nn-color-linea: {{ settings.color_palette.color6 | default: '#E4E0D8' }};
+    --nn-color-placeholder: #E9E4DC;
+
+    /* ── Spacing scale (8px base; Figma gaps snapped to it) ────────────── */
+    --nn-space-1: 8px;
+    --nn-space-2: 16px;
+    --nn-space-3: 24px;
+    --nn-space-4: 32px;
+    --nn-space-5: 48px;
+    --nn-space-6: 64px;
+    --nn-space-7: 80px;
+    --nn-space-8: 120px;
+    --nn-gap-sm: var(--nn-space-4); /* 5-up tiles */
+    --nn-gap-md: 40px; /* 4-up sets (designer outlier, kept) */
+    --nn-gap-lg: var(--nn-space-7); /* 3-up featured */
+    --nn-section-spacing: {{ nn_fluid_section }};
+    --nn-page-gutter: {{ settings.nn_page_gutter_mobile }}px;
+    --nn-max-content-width: {{ settings.nn_max_content_width }}px;
+    --nn-radius-pill: 999px;
+    --nn-radius-card: 12px;
+    --nn-tap-target: 44px;
+    --nn-shadow-menu: 0 12px 16px rgb(26 20 13 / 0.1);
+
+    /* ── Typography ─────────────────────────────────────────────────────── */
+    --nn-font-brand: {% if settings.nn_brand_font %}'Basis Grotesque Pro', {% endif %}{{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+    --nn-font-meta: {{ settings.type_accent_font.family }}, {{ settings.type_accent_font.fallback_families }};
+    --nn-font-size-display: {{ nn_fluid_display }};
+
+    {%- if settings.nn_brand_font %}
+      --font-body--family: var(--nn-font-brand);
+      --font-body--weight: 400;
+      --font-heading--family: var(--nn-font-brand);
+      --font-heading--weight: 400;
+      --font-subheading--family: var(--nn-font-brand);
+      --font-subheading--weight: 500;
+    {%- endif %}
+
+    /* Exact Figma scale, fluid from mobile (375px) to desktop (1440px). */
+    --font-size--h1: {{ nn_fluid_h1 }};
+    --font-size--h2: {{ nn_fluid_h2 }};
+    --font-size--h3: {{ nn_fluid_h3 }};
+    --font-size--h4: {{ nn_fluid_h4 }};
+    --font-size--paragraph: 0.875rem;
+
+    --font-h1--size: var(--font-size--h1);
+    --font-h2--size: var(--font-size--h2);
+    --font-h3--size: var(--font-size--h3);
+    --font-h4--size: var(--font-size--h4);
+    --font-paragraph--size: var(--font-size--paragraph);
+
+    /* Figma tracking is unitless (-6, -4…): read as % of font size. */
+    --font-h1--letter-spacing: -0.06em;
+    --font-h2--letter-spacing: -0.05em;
+    --font-h3--letter-spacing: -0.04em;
+    --font-h4--letter-spacing: -0.03em;
+    --nn-tracking-body: -0.01em;
+    --nn-tracking-nav: -0.03em;
+    --nn-tracking-button: -0.02em;
+    --nn-tracking-badge: 0.04em;
+
+    --font-h1--line-height: 1.05;
+    --font-h2--line-height: 1.1;
+    --font-h3--line-height: 1.15;
+    --font-h4--line-height: 1.25;
+    --font-paragraph--line-height: 1.45;
+
+    --font-h1--weight: 400;
+    --font-h2--weight: 400;
+    --font-h3--weight: 500;
+    --font-h4--weight: 500;
+
+    /* ── Buttons (pill, 16/28 padding, Button 16 Medium) ──────────────── */
+    --button-padding-block: 16px;
+    --button-padding-inline: 28px;
+
+    /* ── Page width: 1344 content + 48 gutters = 1440 ──────────────────── */
+    --narrow-page-width: var(--nn-max-content-width);
+  }
+
+  @media screen and (min-width: 750px) {
+    :root {
+      --nn-page-gutter: {{ settings.nn_page_gutter_mobile | plus: settings.nn_page_gutter | divided_by: 2 }}px;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    :root {
+      --nn-page-gutter: {{ settings.nn_page_gutter }}px;
+    }
+  }
+
+  .page-width-wide,
+  .page-width-normal,
+  .page-width-narrow,
+  .page-width-content {
+    --page-margin: max(var(--nn-page-gutter), var(--safe-area-inset-left, 0px), var(--safe-area-inset-right, 0px));
+  }
+{% endstyle %}

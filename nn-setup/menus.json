@@ -1,0 +1,163 @@
+{
+  "_comment": "Navigation from the Figma 'Menú principal · Estados' frame. Used by nn-setup/create-menus.mjs. URLs assume these collection/page handles; adjust once the client's catalog exists.",
+  "menus": [
+    {
+      "handle": "main-menu",
+      "title": "Main menu",
+      "items": [
+        {
+          "title": "Explora por espacio", "url": "/collections/all",
+          "items": [
+            { "title": "Por espacio", "url": "/collections/all", "items": [
+              { "title": "Comedor", "url": "/collections/comedor" },
+              { "title": "Cocina", "url": "/collections/cocina" },
+              { "title": "Habitación", "url": "/collections/habitacion" },
+              { "title": "Sala", "url": "/collections/sala" },
+              { "title": "Todos los espacios →", "url": "/collections/all" }
+            ]},
+            { "title": "Paquetes armados", "url": "/collections/paquetes", "items": [
+              { "title": "Comedor completo", "url": "/collections/paquete-comedor" },
+              { "title": "Recámara completa", "url": "/collections/paquete-recamara" },
+              { "title": "Sala completa", "url": "/collections/paquete-sala" },
+              { "title": "Depa entero (1 rec.)", "url": "/collections/depa-1-recamara" },
+              { "title": "Depa entero (2 rec.)", "url": "/collections/depa-2-recamaras" }
+            ]},
+            { "title": "Por tamaño de espacio", "url": "/collections/all", "items": [
+              { "title": "Hasta 40 m²", "url": "/collections/hasta-40-m2" },
+              { "title": "40 – 60 m²", "url": "/collections/40-60-m2" },
+              { "title": "60 – 80 m²", "url": "/collections/60-80-m2" },
+              { "title": "Más de 80 m²", "url": "/collections/mas-de-80-m2" }
+            ]}
+          ]
+        },
+        {
+          "title": "Explora por producto", "url": "/collections/all",
+          "items": [
+            { "title": "Mesas", "url": "/collections/mesas", "items": [
+              { "title": "De comedor", "url": "/collections/mesas-de-comedor" },
+              { "title": "De centro", "url": "/collections/mesas-de-centro" },
+              { "title": "Laterales", "url": "/collections/mesas-laterales" },
+              { "title": "Escritorios", "url": "/collections/escritorios" },
+              { "title": "Ver todas las mesas →", "url": "/collections/mesas" }
+            ]},
+            { "title": "Sillas", "url": "/collections/sillas", "items": [
+              { "title": "De comedor", "url": "/collections/sillas-de-comedor" },
+              { "title": "Bancos altos", "url": "/collections/bancos-altos" },
+              { "title": "Sillas de oficina", "url": "/collections/sillas-de-oficina" },
+              { "title": "Ver todas las sillas →", "url": "/collections/sillas" }
+            ]},
+            { "title": "Sillones y sofás", "url": "/collections/sillones-y-sofas", "items": [
+              { "title": "Sofá 2 plazas", "url": "/collections/sofa-2-plazas" },
+              { "title": "Sofá 3 plazas", "url": "/collections/sofa-3-plazas" },
+              { "title": "Sillón individual", "url": "/collections/sillon-individual" },
+              { "title": "Modulares", "url": "/collections/modulares" },
+              { "title": "Ver todos →", "url": "/collections/sillones-y-sofas" }
+            ]},
+            { "title": "Accesorios", "url": "/collections/accesorios", "items": [
+              { "title": "Tapetes", "url": "/collections/tapetes" },
+              { "title": "Iluminación", "url": "/collections/iluminacion" },
+              { "title": "Textiles", "url": "/collections/textiles" },
+              { "title": "Organización", "url": "/collections/organizacion" },
+              { "title": "Ver todos →", "url": "/collections/accesorios" }
+            ]}
+          ]
+        },
+        { "title": "AirBNB: Espacios habitables", "url": "/pages/airbnb" },
+        {
+          "title": "Mayoreo", "url": "/pages/mayoreo",
+          "items": [
+            { "title": "Por tipo de negocio", "url": "/pages/mayoreo", "items": [
+              { "title": "Restaurantes", "url": "/pages/mayoreo#restaurantes" },
+              { "title": "Cafeterías y bares", "url": "/pages/mayoreo#cafeterias" },
+              { "title": "Hoteles y hospedaje", "url": "/pages/mayoreo#hoteles" },
+              { "title": "Oficinas y coworking", "url": "/pages/mayoreo#oficinas" },
+              { "title": "Salones y eventos", "url": "/pages/mayoreo#eventos" },
+              { "title": "Ver todos los giros →", "url": "/pages/mayoreo" }
+            ]},
+            { "title": "Catálogo mayoreo", "url": "/pages/mayoreo#catalogo", "items": [
+              { "title": "Mesas", "url": "/pages/mayoreo#mesas" },
+              { "title": "Sillas y bancos", "url": "/pages/mayoreo#sillas" },
+              { "title": "Sofás y lounge", "url": "/pages/mayoreo#sofas" },
+              { "title": "Camas y recámara", "url": "/pages/mayoreo#camas" },
+              { "title": "Almacenamiento", "url": "/pages/mayoreo#almacenamiento" },
+              { "title": "Accesorios y textiles", "url": "/pages/mayoreo#accesorios" }
+            ]},
+            { "title": "Cómo compramos juntos", "url": "/pages/mayoreo#proceso", "items": [
+              { "title": "Cotización por volumen", "url": "/pages/mayoreo#cotizacion" },
+              { "title": "Pedir muestras físicas", "url": "/pages/mayoreo#muestras" },
+              { "title": "Crédito empresarial", "url": "/pages/mayoreo#credito" },
+              { "title": "Entrega por fases", "url": "/pages/mayoreo#entregas" },
+              { "title": "Ejecutivo de cuenta", "url": "/pages/mayoreo#ejecutivo" }
+            ]}
+          ]
+        },
+        { "title": "Acerca de la marca", "url": "/pages/acerca" },
+        { "title": "Blog", "url": "/blogs/news" },
+        {
+          "title": "Atención a cliente", "url": "/pages/atencion",
+          "items": [
+            { "title": "Ayuda con tu compra", "url": "/pages/atencion#compra", "items": [
+              { "title": "Rastrea tu pedido", "url": "/pages/atencion#rastreo" },
+              { "title": "Cambios y devoluciones", "url": "/policies/refund-policy" },
+              { "title": "Métodos de pago y MSI", "url": "/pages/atencion#pagos" },
+              { "title": "Costos y tiempos de envío", "url": "/policies/shipping-policy" }
+            ]},
+            { "title": "Ayuda con tu producto", "url": "/pages/atencion#producto", "items": [
+              { "title": "Manuales de armado", "url": "/pages/atencion#manuales" },
+              { "title": "Refacciones y piezas", "url": "/pages/atencion#refacciones" },
+              { "title": "Cuidado y limpieza", "url": "/pages/atencion#cuidado" },
+              { "title": "Reportar un daño", "url": "/pages/atencion#danos" }
+            ]},
+            { "title": "Facturación", "url": "/pages/atencion#facturacion", "items": [
+              { "title": "Generar factura", "url": "/pages/atencion#facturar" },
+              { "title": "Facturar compra anterior", "url": "/pages/atencion#facturar-anterior" },
+              { "title": "Datos fiscales", "url": "/pages/atencion#datos-fiscales" },
+              { "title": "Facturación para empresas", "url": "/pages/atencion#empresas" }
+            ]},
+            { "title": "Garantías", "url": "/pages/atencion#garantias", "items": [
+              { "title": "Cobertura de garantía", "url": "/pages/atencion#cobertura" },
+              { "title": "Hacer válida tu garantía", "url": "/pages/atencion#hacer-valida" },
+              { "title": "Preguntas frecuentes", "url": "/pages/atencion#faq" }
+            ]}
+          ]
+        },
+        { "title": "Contacto", "url": "/pages/contact" }
+      ]
+    },
+    { "handle": "footer-espacios", "title": "Footer · Explora por espacio", "items": [
+      { "title": "Comedor", "url": "/collections/comedor" },
+      { "title": "Cocina", "url": "/collections/cocina" },
+      { "title": "Habitación", "url": "/collections/habitacion" },
+      { "title": "Sala", "url": "/collections/sala" },
+      { "title": "Todos los espacios", "url": "/collections/all" }
+    ]},
+    { "handle": "footer-productos", "title": "Footer · Explora por productos", "items": [
+      { "title": "Mesas", "url": "/collections/mesas" },
+      { "title": "Sillas", "url": "/collections/sillas" },
+      { "title": "Sillones y sofás", "url": "/collections/sillones-y-sofas" },
+      { "title": "Accesorios", "url": "/collections/accesorios" },
+      { "title": "Todos los productos", "url": "/collections/all" }
+    ]},
+    { "handle": "footer-atencion", "title": "Footer · Atención a cliente", "items": [
+      { "title": "Ayuda con tu compra", "url": "/pages/atencion#compra" },
+      { "title": "Ayuda con tu producto", "url": "/pages/atencion#producto" },
+      { "title": "Facturación", "url": "/pages/atencion#facturacion" },
+      { "title": "Garantías", "url": "/pages/atencion#garantias" },
+      { "title": "Rastrea tu pedido", "url": "/pages/atencion#rastreo" }
+    ]},
+    { "handle": "footer-nuestro-nido", "title": "Footer · Nuestro Nido", "items": [
+      { "title": "Acerca de la marca", "url": "/pages/acerca" },
+      { "title": "Blog", "url": "/blogs/news" },
+      { "title": "AirBNB: Espacios habitables", "url": "/pages/airbnb" },
+      { "title": "Mayoreo para negocios", "url": "/pages/mayoreo" },
+      { "title": "Contacto", "url": "/pages/contact" }
+    ]},
+    { "handle": "footer-mayoreo", "title": "Footer · Mayoreo", "items": [
+      { "title": "Restaurantes", "url": "/pages/mayoreo#restaurantes" },
+      { "title": "Cafeterías", "url": "/pages/mayoreo#cafeterias" },
+      { "title": "Hoteles", "url": "/pages/mayoreo#hoteles" },
+      { "title": "Oficinas y coworking", "url": "/pages/mayoreo#oficinas" },
+      { "title": "Abrir cuenta mayorista", "url": "/pages/mayoreo#cuenta" }
+    ]}
+  ]
+}

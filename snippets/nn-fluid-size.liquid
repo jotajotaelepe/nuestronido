@@ -1,0 +1,22 @@
+{%- doc -%}
+  Outputs a CSS clamp() that scales linearly from `min` px at a 375px viewport
+  to `max` px at a 1440px viewport.
+
+  @param {number} min - Size in px on a 375px-wide phone.
+  @param {number} max - Size in px on a 1440px-wide desktop.
+
+  @example
+  {% render 'nn-fluid-size', min: 36, max: 64 %}
+{%- enddoc -%}
+
+{%- liquid
+  assign nn_min = min | times: 1.0
+  assign nn_max = max | times: 1.0
+  if nn_max <= nn_min
+    echo nn_max | append: 'px'
+  else
+    assign nn_slope = nn_max | minus: nn_min | divided_by: 1065.0 | times: 100 | round: 4
+    assign nn_intercept = nn_slope | times: 3.75 | minus: nn_min | times: -1 | round: 3
+    echo 'clamp(' | append: nn_min | append: 'px, calc(' | append: nn_intercept | append: 'px + ' | append: nn_slope | append: 'vw), ' | append: nn_max | append: 'px)'
+  endif
+-%}

@@ -161,6 +161,8 @@
                       content_aspect_ratio: ratio,
                       image_border_radius: image_border_radius
                     %}
+                    {%- comment -%} Nuestro Nido: optional promo card for this top-level item {%- endcomment -%}
+                    {%- render 'nn-mega-promo', link: link, block_settings: block_settings -%}
                   </div>
                 </div>
               </div>
@@ -1205,6 +1207,236 @@
       "label": "t:settings.divider_color",
       "placeholder": "t:settings.default",
       "visible_if": "{{ block.settings.drawer_dividers }}"
+    },
+    {
+      "type": "header",
+      "content": "Nuestro Nido · promo cards"
+    },
+    {
+      "type": "paragraph",
+      "content": "Shows a card on the right of a mega menu. Type the exact title of the top-level menu item it belongs to."
+    },
+    {
+      "type": "text",
+      "id": "nn_promo_1_menu_item",
+      "label": "Promo 1: menu item",
+      "default": "Explora por espacio"
+    },
+    {
+      "type": "select",
+      "id": "nn_promo_1_style",
+      "label": "Style",
+      "options": [
+        {
+          "value": "card",
+          "label": "Image card"
+        },
+        {
+          "value": "panel",
+          "label": "Cream panel"
+        }
+      ],
+      "default": "card"
+    },
+    {
+      "type": "image_picker",
+      "id": "nn_promo_1_image",
+      "label": "Image",
+      "visible_if": "{{ block.settings.nn_promo_1_style == 'card' }}"
+    },
+    {
+      "type": "text",
+      "id": "nn_promo_1_eyebrow",
+      "label": "Eyebrow",
+      "default": "Espacio destacado del mes"
+    },
+    {
+      "type": "text",
+      "id": "nn_promo_1_heading",
+      "label": "Heading",
+      "default": "Comedor completo desde $7,990"
+    },
+    {
+      "type": "richtext",
+      "id": "nn_promo_1_text",
+      "label": "Text",
+      "default": "<p>Mesa + 4 sillas + tapete, un solo envío.</p>"
+    },
+    {
+      "type": "text",
+      "id": "nn_promo_1_button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "nn_promo_1_link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "nn_promo_2_menu_item",
+      "label": "Promo 2: menu item",
+      "default": "Explora por producto"
+    },
+    {
+      "type": "select",
+      "id": "nn_promo_2_style",
+      "label": "Style",
+      "options": [
+        {
+          "value": "card",
+          "label": "Image card"
+        },
+        {
+          "value": "panel",
+          "label": "Cream panel"
+        }
+      ],
+      "default": "card"
+    },
+    {
+      "type": "image_picker",
+      "id": "nn_promo_2_image",
+      "label": "Image",
+      "visible_if": "{{ block.settings.nn_promo_2_style == 'card' }}"
+    },
+    {
+      "type": "text",
+      "id": "nn_promo_2_eyebrow",
+      "label": "Eyebrow",
+      "default": "Nuevo ingreso"
+    },
+    {
+      "type": "text",
+      "id": "nn_promo_2_heading",
+      "label": "Heading",
+      "default": "Nuevas: sillas Lina"
+    },
+    {
+      "type": "richtext",
+      "id": "nn_promo_2_text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "nn_promo_2_button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "nn_promo_2_link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "nn_promo_3_menu_item",
+      "label": "Promo 3: menu item",
+      "default": "Mayoreo"
+    },
+    {
+      "type": "select",
+      "id": "nn_promo_3_style",
+      "label": "Style",
+      "options": [
+        {
+          "value": "card",
+          "label": "Image card"
+        },
+        {
+          "value": "panel",
+          "label": "Cream panel"
+        }
+      ],
+      "default": "panel"
+    },
+    {
+      "type": "image_picker",
+      "id": "nn_promo_3_image",
+      "label": "Image",
+      "visible_if": "{{ block.settings.nn_promo_3_style == 'card' }}"
+    },
+    {
+      "type": "text",
+      "id": "nn_promo_3_eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "nn_promo_3_heading",
+      "label": "Heading",
+      "default": "Abre tu cuenta mayorista"
+    },
+    {
+      "type": "richtext",
+      "id": "nn_promo_3_text",
+      "label": "Text",
+      "default": "<p>Precio escalonado desde 10 piezas, factura y plazo de pago a 30 días.</p>"
+    },
+    {
+      "type": "text",
+      "id": "nn_promo_3_button_label",
+      "label": "Button label",
+      "default": "Abrir cuenta"
+    },
+    {
+      "type": "url",
+      "id": "nn_promo_3_link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "nn_promo_4_menu_item",
+      "label": "Promo 4: menu item",
+      "default": "Atención a cliente"
+    },
+    {
+      "type": "select",
+      "id": "nn_promo_4_style",
+      "label": "Style",
+      "options": [
+        {
+          "value": "card",
+          "label": "Image card"
+        },
+        {
+          "value": "panel",
+          "label": "Cream panel"
+        }
+      ],
+      "default": "panel"
+    },
+    {
+      "type": "image_picker",
+      "id": "nn_promo_4_image",
+      "label": "Image",
+      "visible_if": "{{ block.settings.nn_promo_4_style == 'card' }}"
+    },
+    {
+      "type": "text",
+      "id": "nn_promo_4_eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "nn_promo_4_heading",
+      "label": "Heading",
+      "default": "¿Prefieres hablar con alguien?"
+    },
+    {
+      "type": "richtext",
+      "id": "nn_promo_4_text",
+      "label": "Text",
+      "default": "<p>WhatsApp · 55 0000 0000</p><p>Teléfono · 55 0000 0000</p><p>Lun a Vie 9:00 – 18:00</p>"
+    },
+    {
+      "type": "text",
+      "id": "nn_promo_4_button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "nn_promo_4_link",
+      "label": "Link"
     }
   ]
 }
