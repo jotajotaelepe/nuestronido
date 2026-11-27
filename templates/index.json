@@ -9,274 +9,345 @@
  */
 {
   "sections": {
-    "hero_jVaWmY": {
-      "type": "hero",
+    "hero": {
+      "type": "nn-hero",
+      "settings": {
+        "fallback_asset": "nn-demo-hero-comedor.jpg",
+        "heading": "Transforma tu espacio con Nuestro Nido.",
+        "link": "shopify://collections/comedor",
+        "height": 85,
+        "overlay": 35
+      }
+    },
+    "pillars": {
+      "type": "nn-pillars",
+      "settings": {
+        "background": "#F3EFA8",
+        "show_isotipo": true,
+        "heading": "Amueblar tu casa es sencillo.",
+        "text": "Muebles de diseño para espacios reales, con medidas exactas, precio claro y entrega en 72 horas."
+      },
       "blocks": {
-        "text_YLPk4p": {
-          "type": "text",
-          "name": "t:names.heading",
+        "pillar_1": {
+          "type": "pillar",
           "settings": {
-            "text": "<p>Browse our latest products</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "{{ settings.color_palette.background }}",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "icon": "medidas",
+            "title": "Medidas exactas",
+            "text": "<p>Cada pieza indica sus dimensiones reales e incluye manual de armado con instructivo paso a paso.</p>"
+          }
         },
-        "button_H9gpTf": {
-          "type": "button",
-          "name": "t:names.button",
+        "pillar_2": {
+          "type": "pillar",
           "settings": {
-            "label": "Shop all",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-custom",
-            "custom_button_background": "rgba(0, 0, 0, 0)",
-            "custom_button_text": "{{ settings.color_palette.background }}",
-            "custom_button_border": "{{ settings.color_palette.background }}",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
+            "icon": "precio",
+            "title": "Precio claro",
+            "text": "<p>Lo que ves es lo que pagas. Sin sorpresas en el carrito ni costos escondidos.</p>"
+          }
+        },
+        "pillar_3": {
+          "type": "pillar",
+          "settings": {
+            "icon": "entrega",
+            "title": "Entrega en 72 horas",
+            "text": "<p>Tu pedido llega a tu puerta en tres días o menos.</p>"
+          }
+        },
+        "pillar_4": {
+          "type": "pillar",
+          "settings": {
+            "icon": "transporte",
+            "title": "Fácil de transportar",
+            "text": "<p>Cabe en tu vehículo y en el elevador. Hecho para mudarse contigo.</p>"
+          }
         }
       },
       "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
-      ],
-      "name": "t:names.hero",
-      "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "link": "",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
-        "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
-        "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
-        "toggle_overlay": true,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
-      }
+        "pillar_1",
+        "pillar_2",
+        "pillar_3",
+        "pillar_4"
+      ]
     },
-    "product_list_fa6P9H": {
-      "type": "product-list",
+    "espacios": {
+      "type": "nn-tiles",
+      "settings": {
+        "heading": "Explora por espacio",
+        "text": "Comienza por el cuarto que quieres amueblar.",
+        "padding_top": 96,
+        "padding_bottom": 48
+      },
       "blocks": {
-        "static-header": {
-          "type": "_product-list-content",
-          "name": "t:names.header",
-          "static": true,
+        "tile_1": {
+          "type": "tile",
           "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "space-between",
-            "vertical_alignment": "flex-end",
-            "align_baseline": true,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_list_text_YFtzcL": {
-              "type": "_product-list-text",
-              "name": "t:names.collection_title",
-              "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_list_button_MWeP9V": {
-              "type": "_product-list-button",
-              "name": "t:names.product_list_button",
-              "settings": {
-                "label": "View all",
-                "open_in_new_tab": false,
-                "style_class": "button-unstyled",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_list_text_YFtzcL",
-            "product_list_button_MWeP9V"
-          ]
+            "label": "Comedor y Cocina",
+            "collection": "comedor",
+            "fallback_asset": "nn-demo-desayunador.jpg"
+          }
         },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
+        "tile_2": {
+          "type": "tile",
           "settings": {
-            "product_card_gap": 4,
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_677WP3": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title_YXxMTj": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "paragraph",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_JQzVV4": {
-              "type": "price",
-              "name": "t:names.product_price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_card_gallery_677WP3",
-            "product_title_YXxMTj",
-            "price_JQzVV4"
-          ]
+            "label": "Salas y Recámaras",
+            "collection": "sala",
+            "fallback_asset": "nn-demo-sofa-alba.jpg"
+          }
+        },
+        "tile_3": {
+          "type": "tile",
+          "settings": {
+            "label": "Oficina y Almacén",
+            "collection": "oficina"
+          }
+        },
+        "tile_4": {
+          "type": "tile",
+          "settings": {
+            "label": "Espacios Comerciales",
+            "link": "shopify://pages/mayoreo",
+            "fallback_asset": "nn-demo-set-blanco.jpg"
+          }
+        },
+        "tile_5": {
+          "type": "tile",
+          "settings": {
+            "label": "Todos los espacios",
+            "link": "shopify://collections/all",
+            "fallback_asset": "nn-demo-set-nido.jpg"
+          }
         }
       },
-      "name": "t:names.featured_collection",
+      "block_order": [
+        "tile_1",
+        "tile_2",
+        "tile_3",
+        "tile_4",
+        "tile_5"
+      ]
+    },
+    "productos": {
+      "type": "nn-tiles",
       "settings": {
-        "collection": "all",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 8,
-        "columns": 4,
-        "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 8,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "horizontal_alignment": "flex-start",
-        "gap": 28,
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "heading": "Explora por producto",
+        "text": "Comienza aquí si sabes qué pieza buscas.",
+        "padding_top": 48,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "tile_1": {
+          "type": "tile",
+          "settings": {
+            "label": "Mesas",
+            "collection": "mesas",
+            "fallback_asset": "nn-demo-mesa-nido.jpg"
+          }
+        },
+        "tile_2": {
+          "type": "tile",
+          "settings": {
+            "label": "Sillas",
+            "collection": "sillas"
+          }
+        },
+        "tile_3": {
+          "type": "tile",
+          "settings": {
+            "label": "Sillones",
+            "collection": "sillones-y-sofas"
+          }
+        },
+        "tile_4": {
+          "type": "tile",
+          "settings": {
+            "label": "Sets",
+            "collection": "paquetes",
+            "fallback_asset": "nn-demo-set-blanco.jpg"
+          }
+        },
+        "tile_5": {
+          "type": "tile",
+          "settings": {
+            "label": "Accesorios",
+            "collection": "accesorios"
+          }
+        }
+      },
+      "block_order": [
+        "tile_1",
+        "tile_2",
+        "tile_3",
+        "tile_4",
+        "tile_5"
+      ]
+    },
+    "destacados": {
+      "type": "nn-products",
+      "settings": {
+        "layout": "featured",
+        "background": "#F3EFA8",
+        "heading": "Piezas destacadas",
+        "text": "Lo más comprado y deseado.",
+        "collection": "destacados",
+        "button_label": "Ver todas",
+        "button_link": "shopify://collections/destacados",
+        "padding_top": 80,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "product_1": {
+          "type": "product",
+          "settings": {
+            "product": "set-nido",
+            "fallback_asset": "nn-demo-set-nido.jpg"
+          }
+        },
+        "product_2": {
+          "type": "product",
+          "settings": {
+            "product": "sofa-alba",
+            "fallback_asset": "nn-demo-sofa-alba.jpg"
+          }
+        },
+        "product_3": {
+          "type": "product",
+          "settings": {
+            "product": "mesa-luna",
+            "fallback_asset": "nn-demo-mesa-luna.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "product_1",
+        "product_2",
+        "product_3"
+      ]
+    },
+    "sets": {
+      "type": "nn-products",
+      "settings": {
+        "layout": "grid",
+        "background": "#FFFFFF",
+        "heading": "Resuelve el cuarto completo",
+        "text": "Sets completos para amueblar un espacio de una vez.",
+        "collection": "paquetes",
+        "padding_top": 88,
+        "padding_bottom": 120
+      },
+      "blocks": {
+        "product_1": {
+          "type": "product",
+          "settings": {
+            "product": "comedor-nido-para-4",
+            "fallback_asset": "nn-demo-set-nido.jpg"
+          }
+        },
+        "product_2": {
+          "type": "product",
+          "settings": {
+            "product": "desayunador-compacto",
+            "fallback_asset": "nn-demo-desayunador.jpg"
+          }
+        },
+        "product_3": {
+          "type": "product",
+          "settings": {
+            "product": "sala-lista",
+            "fallback_asset": "nn-demo-sofa-alba.jpg"
+          }
+        },
+        "product_4": {
+          "type": "product",
+          "settings": {
+            "product": "home-office"
+          }
+        }
+      },
+      "block_order": [
+        "product_1",
+        "product_2",
+        "product_3",
+        "product_4"
+      ]
+    },
+    "banner": {
+      "type": "nn-banner",
+      "settings": {
+        "fallback_asset": "nn-demo-banner-sofa.jpg",
+        "background": "#47423A",
+        "heading": "Simplicidad y elegancia lista para llevar.",
+        "button_label": "Conoce más",
+        "button_link": "shopify://pages/acerca"
       }
+    },
+    "resenas": {
+      "type": "nn-reviews",
+      "settings": {
+        "background": "#FFFFFF",
+        "eyebrow": "Reseñas",
+        "heading": "Lo que dicen en casa",
+        "average": "4.8",
+        "total_label": "1,240 reseñas verificadas",
+        "padding_top": 144,
+        "padding_bottom": 144
+      },
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Medí mi comedor, revisé las medidas en la página y la mesa quedó exacta. Llegó en dos días y la armé sola con el instructivo.",
+            "name": "Mariana R.",
+            "meta": "Coyoacán, CDMX · Mesa de comedor Nido 120",
+            "verified": true
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Vivo en un cuarto piso sin elevador y la banca subió sin problema. Se siente sólida y no se ha rayado nada.",
+            "name": "Diego M.",
+            "meta": "Monterrey, NL · Banca Nido 140",
+            "verified": true
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Amueblé mi departamento de Airbnb completo con ellos. Pagué exactamente lo que vi en la página, sin sorpresas.",
+            "name": "Andrea L.",
+            "meta": "Del Valle, CDMX · Sala lista",
+            "verified": true
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "quote": "El sofá cama es comodísimo y cupo por la puerta sin desarmar nada. La entrega fue puntual.",
+            "name": "Jorge P.",
+            "meta": "Guadalajara, JAL · Sofá cama Brisa",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4"
+      ]
     }
   },
   "order": [
-    "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "hero",
+    "pillars",
+    "espacios",
+    "productos",
+    "destacados",
+    "sets",
+    "banner",
+    "resenas"
   ]
 }

@@ -1,0 +1,38 @@
+{%- doc -%}
+  Line illustrations for the brand pillars (stand-ins drawn in the Figma style until the
+  designer's artwork is exported). Stroke uses currentColor (taupe in the section).
+
+  @param {string} icon - 'medidas', 'precio', 'entrega' or 'transporte'.
+{%- enddoc -%}
+<svg viewBox="0 0 128 116" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  {%- case icon -%}
+    {%- when 'precio' -%}
+      <path d="M30 60 L62 28 H96 V62 L64 94 Z"/>
+      <circle cx="84" cy="40" r="5"/>
+      <path d="M52 66 c4 4 12 4 14 -1 c2 -6 -12 -6 -10 -12 c2 -5 10 -5 14 -1"/>
+      <path d="M61 50 v-4 M57 74 v-4"/>
+      <path d="M14 108 H120" opacity=".5"/>
+    {%- when 'entrega' -%}
+      <path d="M10 40 H74 V88 H10 Z"/>
+      <path d="M74 56 H100 L116 72 V88 H74"/>
+      <circle cx="30" cy="92" r="9"/>
+      <circle cx="96" cy="92" r="9"/>
+      <path d="M22 54 H52 M22 66 H44"/>
+      <path d="M84 60 V72 H112"/>
+      <path d="M4 108 H124" opacity=".5"/>
+    {%- when 'transporte' -%}
+      <path d="M40 30 H92 V82 H40 Z"/>
+      <path d="M40 46 H92 M66 30 V46"/>
+      <path d="M22 18 L32 18 L40 96 H104"/>
+      <circle cx="46" cy="102" r="6"/>
+      <circle cx="96" cy="102" r="6"/>
+      <path d="M104 22 l6 -8 l6 8 M110 14 V44" opacity=".7"/>
+    {%- else -%}
+      <path d="M18 56 H110"/>
+      <path d="M26 56 V100 M102 56 V100 M38 56 L30 100 M90 56 L98 100"/>
+      <path d="M18 30 H110 M18 24 V36 M110 24 V36"/>
+      <path d="M8 56 V100 M4 56 H12 M4 100 H12"/>
+      <path d="M48 44 H80" opacity=".6"/>
+      <path d="M14 108 H120" opacity=".5"/>
+  {%- endcase -%}
+</svg>

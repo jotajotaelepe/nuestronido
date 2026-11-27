@@ -148,11 +148,32 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
+                },
+                "nn_badge": {
+                  "type": "custom-liquid",
+                  "settings": {
+                    "custom_liquid": "{% render 'nn-card-meta', product: closest.product, part: 'badge' %}"
+                  }
+                },
+                "nn_sub": {
+                  "type": "custom-liquid",
+                  "settings": {
+                    "custom_liquid": "{% render 'nn-card-meta', product: closest.product, part: 'subtitle' %}{% render 'nn-card-meta', product: closest.product, part: 'rating' %}"
+                  }
+                },
+                "nn_msi": {
+                  "type": "custom-liquid",
+                  "settings": {
+                    "custom_liquid": "{% render 'nn-card-meta', product: closest.product, part: 'msi' %}"
+                  }
                 }
               },
               "block_order": [
+                "nn_badge",
                 "text_xpVMaM",
-                "price_tVjtKg"
+                "nn_sub",
+                "price_tVjtKg",
+                "nn_msi"
               ]
             },
             "divider_VJhene": {
@@ -240,6 +261,12 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "nn_benefits": {
+              "type": "custom-liquid",
+              "settings": {
+                "custom_liquid": "<ul class=\"nn-benefits nn-meta\">\n  <li>✓ Entrega en 72 horas en CDMX y zona metropolitana</li>\n  <li>✓ Medidas exactas y manual de armado incluido</li>\n  <li>✓ Hasta 18 meses sin intereses con tarjetas participantes</li>\n  <li>✓ Cambios y devoluciones en 30 días</li>\n</ul>"
+              }
             }
           },
           "block_order": [
@@ -247,6 +274,7 @@
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
+            "nn_benefits",
             "text_aEtTtq"
           ]
         },
@@ -279,7 +307,7 @@
           "type": "text",
           "name": "t:names.header",
           "settings": {
-            "text": "<h2>You may also like </h2>",
+            "text": "<h2>Completa tu espacio</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -406,10 +434,71 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "nn_reviews": {
+      "type": "nn-reviews",
+      "settings": {
+        "background": "#FAF8E1",
+        "eyebrow": "Reseñas",
+        "heading": "Reseñas de clientes",
+        "average": "4.8",
+        "total_label": "1,240 reseñas verificadas",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Medí mi comedor, revisé las medidas en la página y la mesa quedó exacta. Llegó en dos días y la armé sola con el instructivo.",
+            "name": "Mariana R.",
+            "meta": "Coyoacán, CDMX · Mesa de comedor Nido 120",
+            "verified": true
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Vivo en un cuarto piso sin elevador y la banca subió sin problema. Se siente sólida y no se ha rayado nada.",
+            "name": "Diego M.",
+            "meta": "Monterrey, NL · Banca Nido 140",
+            "verified": true
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Amueblé mi departamento de Airbnb completo con ellos. Pagué exactamente lo que vi en la página, sin sorpresas.",
+            "name": "Andrea L.",
+            "meta": "Del Valle, CDMX · Sala lista",
+            "verified": true
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "quote": "El sofá cama es comodísimo y cupo por la puerta sin desarmar nada. La entrega fue puntual.",
+            "name": "Jorge P.",
+            "meta": "Guadalajara, JAL · Sofá cama Brisa",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4"
+      ]
     }
   },
   "order": [
     "main",
-    "product_recommendations_qggXJq"
+    "product_recommendations_qggXJq",
+    "nn_reviews"
   ]
 }

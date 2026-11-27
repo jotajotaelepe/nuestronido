@@ -571,3 +571,101 @@ body {
     white-space: normal;
   }
 }
+
+/* ───────────────── Product cards, tags, stars (home + PLP) ───────────────── */
+
+.nn-tag {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 3px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.nn-tag--verde { background: var(--nn-color-verde); color: var(--nn-color-blanco); }
+.nn-tag--tinta { background: var(--nn-color-tinta); color: var(--nn-color-blanco); }
+.nn-tag--soft { background: var(--nn-color-mantequilla); color: var(--nn-color-tinta); font-size: 11px; }
+
+.nn-stars {
+  display: inline-flex;
+  gap: 2px;
+  color: var(--nn-color-tinta);
+  vertical-align: middle;
+}
+.nn-stars__star { width: var(--nn-star-size, 14px); height: var(--nn-star-size, 14px); }
+.nn-stars__star--empty { color: var(--nn-color-gris-300); }
+
+.nn-card { display: flex; flex-direction: column; min-width: 0; }
+.nn-card__link { display: flex; flex-direction: column; gap: 16px; color: inherit; text-decoration: none; }
+.nn-card__media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--nn-color-placeholder);
+}
+.nn-card__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.nn-card__link:hover .nn-card__media img { transform: scale(1.03); }
+.nn-card__placeholder {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  color: var(--nn-color-gris-600);
+}
+.nn-card__body { display: flex; flex-direction: column; gap: 6px; }
+.nn-card__title {
+  margin: 0;
+  font-family: var(--nn-font-brand);
+  font-size: var(--font-size--h4);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+.nn-card__title--large {
+  font-size: clamp(2rem, 1.4rem + 1.6vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+.nn-card-sub { margin: 0; color: var(--nn-color-gris-600); }
+.nn-card-price { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.nn-card-price__amount { font-weight: 500; font-size: 15px; }
+.nn-card-rating { display: flex; align-items: center; gap: 6px; margin: 0; color: var(--nn-color-gris-600); }
+
+/* Horizon product cards (PLP, recommendations): tighten to the Figma card */
+.product-card .nn-tag { margin-block-end: 2px; }
+.product-card .nn-card-sub,
+.product-card .nn-card-rating { margin: 0; }
+
+/* Shared section header (Figma: H1 title + gris subtitle) */
+.nn-section-head { display: flex; flex-direction: column; gap: 8px; margin-block-end: var(--nn-space-5); }
+.nn-section-head__title {
+  margin: 0;
+  font-size: var(--font-size--h1);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.06em;
+}
+.nn-section-head__title--display { font-size: var(--nn-font-size-display); line-height: 1; }
+.nn-section-head__text { margin: 0; color: var(--nn-color-gris-600); font-size: 14px; }
+
+.nn-wrap {
+  width: 100%;
+  max-width: calc(var(--nn-max-content-width) + 2 * var(--nn-page-gutter));
+  margin-inline: auto;
+  padding-inline: var(--nn-page-gutter);
+  box-sizing: border-box;
+}
+
+/* ───────────────── Collection + product page details ───────────────── */
+.nn-breadcrumb { color: var(--nn-color-gris-600); }
+.nn-breadcrumb a { color: inherit; text-decoration: none; }
+.nn-breadcrumb a:hover { color: var(--nn-color-tinta); }
+.nn-breadcrumb span { color: var(--nn-color-tinta); }
+.nn-benefits { list-style: none; margin: 0; padding: 16px 0 0; display: grid; gap: 8px; color: var(--nn-color-tinta); border-top: 1px solid var(--nn-color-linea); }

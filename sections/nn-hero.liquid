@@ -1,0 +1,60 @@
+{%- comment -%}
+  Nuestro Nido hero (Figma Home, top): full-bleed photo with a display headline at the bottom left.
+  The demo photo in assets/ is the fallback until an image is picked in the editor.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="nn-hero" style="--nn-hero-h: {{ s.height }}svh; --nn-hero-overlay: {{ s.overlay }}%;">
+  {%- if s.link != blank -%}<a class="nn-hero__cover-link" href="{{ s.link }}" aria-label="{{ s.heading | strip_html | escape }}"></a>{%- endif -%}
+  <div class="nn-hero__media">
+    {%- if s.image != blank -%}
+      {{ s.image | image_url: width: 2880 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '750, 1100, 1500, 2000, 2880' }}
+    {%- elsif s.fallback_asset != blank -%}
+      <img src="{{ s.fallback_asset | asset_url }}" alt="" fetchpriority="high">
+    {%- endif -%}
+  </div>
+  <div class="nn-hero__content nn-wrap">
+    <h1 class="nn-hero__heading nn-display">{{ s.heading }}</h1>
+  </div>
+</section>
+
+{% stylesheet %}
+  .nn-hero {
+    position: relative;
+    min-height: clamp(420px, var(--nn-hero-h, 85svh), 900px);
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    color: var(--nn-color-blanco);
+  }
+  .nn-hero__media { position: absolute; inset: 0; }
+  .nn-hero__media img { width: 100%; height: 100%; object-fit: cover; }
+  .nn-hero__media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgb(0 0 0 / var(--nn-hero-overlay, 35%)), transparent 60%);
+  }
+  .nn-hero__cover-link { position: absolute; inset: 0; z-index: 2; }
+  .nn-hero__content { position: relative; z-index: 1; padding-block-end: clamp(32px, 4vw, 40px); }
+  .nn-hero__heading { margin: 0; max-width: 12ch; color: inherit; }
+  .nn-hero__heading p { margin: 0; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "NN · Hero",
+  "tag": "div",
+  "class": "nn-section nn-section--hero",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Imagen" },
+    { "type": "text", "id": "fallback_asset", "label": "Imagen provisional (archivo en assets)", "default": "nn-demo-hero-comedor.jpg", "info": "Se usa sólo si no eliges una imagen." },
+    { "type": "inline_richtext", "id": "heading", "label": "Título", "default": "Transforma tu espacio con Nuestro Nido." },
+    { "type": "url", "id": "link", "label": "Enlace" },
+    { "type": "range", "id": "height", "label": "Alto (% de la pantalla)", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 85 },
+    { "type": "range", "id": "overlay", "label": "Sombra inferior", "min": 0, "max": 80, "step": 5, "unit": "%", "default": 35 }
+  ],
+  "presets": [{ "name": "NN · Hero" }]
+}
+{% endschema %}
