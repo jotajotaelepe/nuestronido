@@ -97,7 +97,8 @@
           "type": "tile",
           "settings": {
             "label": "Oficina y Almacén",
-            "collection": "oficina"
+            "collection": "oficina",
+            "image": "shopify://shop_images/nn-demo-mesa-luna.jpg"
           }
         },
         "tile_4": {
@@ -146,14 +147,16 @@
           "type": "tile",
           "settings": {
             "label": "Sillas",
-            "collection": "sillas"
+            "collection": "sillas",
+            "image": "shopify://shop_images/nn-demo-hero-comedor.jpg"
           }
         },
         "tile_3": {
           "type": "tile",
           "settings": {
             "label": "Sillones",
-            "collection": "sillones-y-sofas"
+            "collection": "sillones-y-sofas",
+            "image": "shopify://shop_images/nn-demo-banner-sofa.jpg"
           }
         },
         "tile_4": {
@@ -168,7 +171,8 @@
           "type": "tile",
           "settings": {
             "label": "Accesorios",
-            "collection": "accesorios"
+            "collection": "accesorios",
+            "image": "shopify://shop_images/nn-demo-desayunador.jpg"
           }
         }
       },

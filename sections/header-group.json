@@ -102,6 +102,8 @@
           "static": true,
           "settings": {
             "menu": "main-menu",
+            "nn_promo_1_image": "shopify://shop_images/nn-demo-set-nido.jpg",
+            "nn_promo_2_image": "shopify://shop_images/nn-demo-hero-comedor.jpg",
             "type_font_primary_size": "0.875rem",
             "menu_font_style": "regular",
             "type_font_primary_link": "body",
