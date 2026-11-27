@@ -90,7 +90,9 @@ body {
     display: none;
   }
 
-  .announcement-bar__slides {
+  /* Selectors carry the slider class so they outrank Horizon's section stylesheet,
+     which loads after this file and stacks every slide in one grid cell. */
+  .announcement-bar__slider .announcement-bar__slides {
     display: flex;
     justify-content: center;
     gap: 96px;
@@ -98,8 +100,12 @@ body {
     max-width: none;
   }
 
-  .announcement-bar__slides > .announcement-bar__slide,
-  .announcement-bar__slides > .announcement-bar__slide[aria-hidden='true'] {
+  .announcement-bar__slider .announcement-bar__slides > * {
+    grid-area: auto;
+  }
+
+  .announcement-bar__slider .announcement-bar__slides > .announcement-bar__slide,
+  .announcement-bar__slider .announcement-bar__slides > .announcement-bar__slide[aria-hidden='true'] {
     opacity: 1;
     visibility: visible;
   }
