@@ -153,12 +153,20 @@ body {
 /* One flat panel with a hairline, no shadow: Horizon's underlay shadow plus ours stacked into
    a grey gradient under the open menu. */
 .header .menu-list__submenu {
-  border-block-end: 1px solid var(--nn-color-linea);
   box-shadow: none;
 }
 
+/* The hairline sits on the underlay, which is the panel's real visible bottom. The submenu box
+   itself ends ~65px above its content, so a border there floated inside the panel. */
 .header .header__underlay-open::after {
   box-shadow: none;
+  border-block-end: 1px solid var(--nn-color-linea);
+}
+
+/* Mobile drawer: Horizon only draws dividers under items with a submenu, so plain top-level
+   links (AirBNB, Acerca, Blog, Contacto) get the same line for an even rhythm. */
+.menu-drawer__menu > .menu-drawer__list-item > a.menu-drawer__menu-item--mainlist {
+  border-block-end: 1px solid var(--drawer-divider-color, var(--color-border));
 }
 
 .header .mega-menu {
