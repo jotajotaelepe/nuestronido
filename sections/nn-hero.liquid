@@ -1,0 +1,38 @@
+{%- comment -%}
+  Nuestro Nido hero (Figma Home, top): full-bleed photo with a display headline at the bottom left.
+  The demo photo in assets/ is the fallback until an image is picked in the editor.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="nn-hero" style="--nn-hero-h: {{ s.height }}; --nn-hero-overlay: {{ s.overlay }}%;">
+  {%- if s.link != blank -%}<a class="nn-hero__cover-link" href="{{ s.link }}" aria-label="{{ s.heading | strip_html | escape }}"></a>{%- endif -%}
+  <div class="nn-hero__media">
+    {%- if s.image != blank -%}
+      {{ s.image | image_url: width: 2880 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '750, 1100, 1500, 2000, 2880' }}
+    {%- elsif s.fallback_asset != blank -%}
+      <img src="{{ s.fallback_asset | asset_url }}" alt="" fetchpriority="high">
+    {%- endif -%}
+  </div>
+  <div class="nn-hero__content nn-wrap">
+    <h1 class="nn-hero__heading nn-display">{{ s.heading }}</h1>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "NN · Hero",
+  "tag": "div",
+  "class": "nn-section nn-section--hero",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Imagen" },
+    { "type": "text", "id": "fallback_asset", "label": "Imagen provisional (archivo en assets)", "default": "nn-demo-hero-comedor.jpg", "info": "Se usa sólo si no eliges una imagen." },
+    { "type": "inline_richtext", "id": "heading", "label": "Título", "default": "Transforma tu espacio con Nuestro Nido." },
+    { "type": "url", "id": "link", "label": "Enlace" },
+    { "type": "range", "id": "height", "label": "Alto", "min": 50, "max": 100, "step": 5, "default": 85 },
+    { "type": "range", "id": "overlay", "label": "Sombra inferior", "min": 0, "max": 80, "step": 5, "unit": "%", "default": 35 }
+  ],
+  "presets": [{ "name": "NN · Hero" }]
+}
+{% endschema %}

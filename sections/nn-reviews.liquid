@@ -1,0 +1,98 @@
+{%- comment -%}
+  Nuestro Nido reviews (Figma Home "Reseñas · sección", node 9781:2438): eyebrow + title,
+  average with stars and total, prev/next arrows, review cards (stars, quote, initials avatar,
+  name, meta, "Compra verificada"). Reviews are blocks until a reviews app replaces them.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="nn-reviews" style="--nn-reviews-bg: {{ s.background }}; padding-block: {{ s.padding_top }}px {{ s.padding_bottom }}px;">
+  <div class="nn-wrap">
+    <header class="nn-reviews__head">
+      <div>
+        {%- if s.eyebrow != blank -%}<p class="nn-reviews__eyebrow nn-badge">{{ s.eyebrow }}</p>{%- endif -%}
+        <h2 class="nn-reviews__title">{{ s.heading }}</h2>
+      </div>
+      <div class="nn-reviews__summary">
+        <span class="nn-reviews__avg">{{ s.average }}</span>
+        <span class="nn-reviews__detail">
+          {%- render 'nn-stars', rating: s.average, size: 16 -%}
+          <span class="nn-meta">{{ s.total_label }}</span>
+        </span>
+        <span class="nn-reviews__arrows">
+          <button type="button" class="nn-reviews__arrow" data-nn-reviews-prev aria-label="Reseña anterior">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+          <button type="button" class="nn-reviews__arrow" data-nn-reviews-next aria-label="Reseña siguiente">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+        </span>
+      </div>
+    </header>
+
+    <ul class="nn-reviews__track" role="list" data-nn-reviews-track>
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign b = block.settings
+          assign nn_words = b.name | split: ' '
+          assign nn_first = nn_words.first | slice: 0
+          assign nn_second = nn_words[1] | slice: 0
+        -%}
+        <li class="nn-review" {{ block.shopify_attributes }}>
+          {%- render 'nn-stars', rating: b.rating, size: 16 -%}
+          <blockquote class="nn-review__quote">“{{ b.quote }}”</blockquote>
+          <div class="nn-review__author">
+            <span class="nn-review__avatar" aria-hidden="true">{{ nn_first }}{{ nn_second }}</span>
+            <span class="nn-review__data">
+              <span class="nn-review__name">{{ b.name }}</span>
+              <span class="nn-review__meta nn-meta">{{ b.meta }}</span>
+              {%- if b.verified -%}<span class="nn-review__verified nn-meta">✓ Compra verificada</span>{%- endif -%}
+            </span>
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const root = document.currentScript.previousElementSibling;
+    const track = root.querySelector('[data-nn-reviews-track]');
+    if (!track) return;
+    const step = () => (track.firstElementChild?.getBoundingClientRect().width || 300) + 64;
+    root.querySelector('[data-nn-reviews-prev]')?.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    root.querySelector('[data-nn-reviews-next]')?.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+  })();
+</script>
+
+
+{% schema %}
+{
+  "name": "NN · Reseñas",
+  "tag": "div",
+  "settings": [
+    { "type": "color", "id": "background", "label": "Fondo", "default": "#FFFFFF" },
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Reseñas" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Lo que dicen en casa" },
+    { "type": "text", "id": "average", "label": "Calificación promedio", "default": "4.8" },
+    { "type": "text", "id": "total_label", "label": "Total", "default": "1,240 reseñas verificadas" },
+    { "type": "range", "id": "padding_top", "label": "Espacio arriba", "min": 0, "max": 200, "step": 8, "unit": "px", "default": 144 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio abajo", "min": 0, "max": 200, "step": 8, "unit": "px", "default": 144 }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Reseña",
+      "settings": [
+        { "type": "range", "id": "rating", "label": "Estrellas", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "textarea", "id": "quote", "label": "Reseña" },
+        { "type": "text", "id": "name", "label": "Nombre" },
+        { "type": "text", "id": "meta", "label": "Detalle (ciudad · producto)" },
+        { "type": "checkbox", "id": "verified", "label": "Compra verificada", "default": true }
+      ]
+    }
+  ],
+  "presets": [{ "name": "NN · Reseñas" }]
+}
+{% endschema %}

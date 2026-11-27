@@ -1,0 +1,84 @@
+{%- comment -%}
+  Nuestro Nido product row. Two Figma layouts:
+  - featured: "Piezas destacadas" (mantequilla band, display title, 3 big cards, taupe pill button)
+  - grid: "Resuelve el cuarto completo" (H1 title, 4 cards with badge, measures, price + MSI, rating)
+  Products come from blocks (hand-picked) or, with no blocks, from the chosen collection.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign nn_featured = false
+  if s.layout == 'featured'
+    assign nn_featured = true
+  endif
+  assign nn_cols = 4
+  assign nn_size = 'default'
+  assign nn_ratio = '308 / 388'
+  if nn_featured
+    assign nn_cols = 3
+    assign nn_size = 'large'
+    assign nn_ratio = '393 / 459'
+  endif
+-%}
+<section
+  class="nn-products nn-products--{{ s.layout }}"
+  style="--nn-products-bg: {{ s.background }}; --nn-products-cols: {{ nn_cols }}; padding-block: {{ s.padding_top }}px {{ s.padding_bottom }}px;"
+>
+  <div class="nn-wrap">
+    <header class="nn-section-head">
+      <h2 class="nn-section-head__title{% if nn_featured %} nn-section-head__title--display{% endif %}">{{ s.heading }}</h2>
+      {%- if s.text != blank -%}<p class="nn-section-head__text">{{ s.text }}</p>{%- endif -%}
+    </header>
+
+    <ul class="nn-products__grid" role="list">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <li {{ block.shopify_attributes }}>
+            {%- render 'nn-product-card', product: block.settings.product, size: nn_size, image_ratio: nn_ratio, fallback_image: block.settings.fallback_asset -%}
+          </li>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for product in s.collection.products limit: nn_cols -%}
+          <li>{%- render 'nn-product-card', product: product, size: nn_size, image_ratio: nn_ratio -%}</li>
+        {%- endfor -%}
+      {%- endif -%}
+    </ul>
+
+    {%- if s.button_label != blank -%}
+      <a class="nn-products__button" href="{{ s.button_link | default: s.collection.url }}">{{ s.button_label }}</a>
+    {%- endif -%}
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "NN · Productos",
+  "tag": "div",
+  "settings": [
+    { "type": "select", "id": "layout", "label": "Diseño", "default": "grid", "options": [
+      { "value": "featured", "label": "Destacados (3 grandes)" },
+      { "value": "grid", "label": "Rejilla (4 tarjetas)" }
+    ] },
+    { "type": "color", "id": "background", "label": "Fondo", "default": "#FFFFFF" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Resuelve el cuarto completo" },
+    { "type": "text", "id": "text", "label": "Subtítulo", "default": "Sets completos para amueblar un espacio de una vez." },
+    { "type": "collection", "id": "collection", "label": "Colección", "info": "Se usa si no agregas productos como bloques." },
+    { "type": "text", "id": "button_label", "label": "Botón" },
+    { "type": "url", "id": "button_link", "label": "Enlace del botón" },
+    { "type": "range", "id": "padding_top", "label": "Espacio arriba", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio abajo", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Producto",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Producto" },
+        { "type": "text", "id": "fallback_asset", "label": "Imagen provisional (archivo en assets)", "info": "Sólo si el producto aún no tiene fotos." }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [{ "name": "NN · Productos" }]
+}
+{% endschema %}

@@ -1,0 +1,51 @@
+{%- doc -%}
+  Nuestro Nido product card details that Horizon's card doesn't have (Figma "Tarjeta producto").
+  Reads product metafields in the `nido` namespace:
+  nido.badge (text), nido.subtitulo (text), nido.rating (decimal), nido.rating_count (integer).
+  Also used inside Horizon product cards through a Custom Liquid block.
+
+  @param {object} product - The product.
+  @param {string} part - 'badge', 'subtitle', 'price' (price + 18 MSI chip), 'rating', 'msi' or 'all'.
+  @param {number} [msi_months] - Months without interest for the chip. Default 18.
+{%- enddoc -%}
+{%- liquid
+  assign nn_p = product
+  assign nn_months = msi_months | default: 18
+  assign nn_badge = nn_p.metafields.nido.badge.value
+  assign nn_sub = nn_p.metafields.nido.subtitulo.value
+  assign nn_rating = nn_p.metafields.nido.rating.value
+  assign nn_count = nn_p.metafields.nido.rating_count.value
+  assign nn_msi = nn_p.price | divided_by: nn_months | divided_by: 100.0 | ceil | times: 100
+-%}
+{%- if part == 'badge' or part == 'all' -%}
+  {%- if nn_badge != blank -%}
+    {%- liquid
+      assign nn_badge_down = nn_badge | downcase
+      assign nn_badge_mod = 'verde'
+      if nn_badge_down contains 'set'
+        assign nn_badge_mod = 'tinta'
+      endif
+    -%}
+    <span class="nn-tag nn-tag--{{ nn_badge_mod }} nn-badge">{{ nn_badge }}</span>
+  {%- endif -%}
+{%- endif -%}
+{%- if part == 'subtitle' or part == 'all' -%}
+  {%- if nn_sub != blank -%}<p class="nn-card-sub nn-meta">{{ nn_sub }}</p>{%- endif -%}
+{%- endif -%}
+{%- if part == 'price' or part == 'all' -%}
+  <div class="nn-card-price">
+    <span class="nn-card-price__amount">{{ nn_p.price | money_with_currency }}</span>
+    <span class="nn-tag nn-tag--soft nn-meta">{{ nn_months }} MSI de {{ nn_msi | money_without_trailing_zeros }}</span>
+  </div>
+{%- endif -%}
+{%- if part == 'msi' -%}
+  <span class="nn-tag nn-tag--soft nn-meta">{{ nn_months }} MSI de {{ nn_msi | money_without_trailing_zeros }}</span>
+{%- endif -%}
+{%- if part == 'rating' or part == 'all' -%}
+  {%- if nn_rating != blank -%}
+    <p class="nn-card-rating nn-meta">
+      {%- render 'nn-stars', rating: nn_rating, size: 12 -%}
+      <span>{{ nn_rating }} ({{ nn_count | default: 0 }})</span>
+    </p>
+  {%- endif -%}
+{%- endif -%}

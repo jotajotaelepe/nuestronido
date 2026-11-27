@@ -1,0 +1,17 @@
+{%- doc -%}
+  Five-star rating row (Figma "Estrellas"). Filled stars in tinta, empty in gris-300.
+
+  @param {number} rating - Rating from 0 to 5.
+  @param {string} [size] - Star size in px. Default 14.
+{%- enddoc -%}
+{%- liquid
+  assign nn_size = size | default: 14
+  assign nn_full = rating | default: 0 | times: 1.0 | round
+-%}
+<span class="nn-stars" style="--nn-star-size: {{ nn_size }}px;" role="img" aria-label="{{ rating }} de 5 estrellas">
+  {%- for i in (1..5) -%}
+    <svg class="nn-stars__star{% if i > nn_full %} nn-stars__star--empty{% endif %}" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+      <path d="M8 1.2l2.06 4.38 4.74.6-3.48 3.3.9 4.72L8 11.9l-4.22 2.3.9-4.72L1.2 6.18l4.74-.6L8 1.2z" fill="currentColor"/>
+    </svg>
+  {%- endfor -%}
+</span>

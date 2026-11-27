@@ -1,0 +1,66 @@
+{%- comment -%}
+  Nuestro Nido brand pillars (Figma Home "Pilares de marca", node 9772:2443):
+  mantequilla band, isotipo, centered title + intro, 4 numbered pillars with line illustrations.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="nn-pillars nn-section-spacing" style="--nn-pillars-bg: {{ s.background }};">
+  <div class="nn-wrap">
+    <div class="nn-pillars__intro">
+      {%- if s.show_isotipo -%}
+        {%- render 'nn-logo', variant: 'isotipo', class: 'nn-pillars__isotipo' -%}
+      {%- endif -%}
+      <h2 class="nn-pillars__title">{{ s.heading }}</h2>
+      {%- if s.text != blank -%}<p class="nn-pillars__text">{{ s.text }}</p>{%- endif -%}
+    </div>
+    <ol class="nn-pillars__list">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        <li class="nn-pillar" {{ block.shopify_attributes }}>
+          <div class="nn-pillar__art">
+            {%- if b.image != blank -%}
+              {{ b.image | image_url: width: 300 | image_tag: loading: 'lazy', alt: '' }}
+            {%- else -%}
+              {%- render 'nn-pillar-art', icon: b.icon -%}
+            {%- endif -%}
+          </div>
+          <span class="nn-pillar__number" aria-hidden="true">{{ forloop.index }}</span>
+          <h3 class="nn-pillar__title nn-badge">{{ b.title }}</h3>
+          <div class="nn-pillar__text">{{ b.text }}</div>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "NN · Pilares de marca",
+  "tag": "div",
+  "settings": [
+    { "type": "color", "id": "background", "label": "Fondo", "default": "#F3EFA8" },
+    { "type": "checkbox", "id": "show_isotipo", "label": "Mostrar isotipo", "default": true },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Amueblar tu casa es sencillo." },
+    { "type": "text", "id": "text", "label": "Texto", "default": "Muebles de diseño para espacios reales, con medidas exactas, precio claro y entrega en 72 horas." }
+  ],
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Pilar",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Ilustración", "default": "medidas", "options": [
+          { "value": "medidas", "label": "Medidas" }, { "value": "precio", "label": "Precio" },
+          { "value": "entrega", "label": "Entrega" }, { "value": "transporte", "label": "Transporte" }
+        ] },
+        { "type": "image_picker", "id": "image", "label": "Ilustración propia (opcional)" },
+        { "type": "text", "id": "title", "label": "Título", "default": "Medidas exactas" },
+        { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Cada pieza indica sus dimensiones reales.</p>" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [{ "name": "NN · Pilares de marca" }]
+}
+{% endschema %}
