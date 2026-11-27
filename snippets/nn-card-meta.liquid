@@ -15,7 +15,7 @@
   assign nn_sub = nn_p.metafields.nido.subtitulo.value
   assign nn_rating = nn_p.metafields.nido.rating.value
   assign nn_count = nn_p.metafields.nido.rating_count.value
-  assign nn_msi = nn_p.price | divided_by: nn_months
+  assign nn_msi = nn_p.price | divided_by: nn_months | divided_by: 100.0 | ceil | times: 100
 -%}
 {%- if part == 'badge' or part == 'all' -%}
   {%- if nn_badge != blank -%}

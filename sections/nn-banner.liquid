@@ -21,21 +21,6 @@
   </div>
 </section>
 
-{% stylesheet %}
-  .nn-banner { position: relative; min-height: clamp(480px, 58vw, 840px); display: flex; align-items: flex-end; overflow: hidden; background: var(--nn-banner-bg, #47423a); color: var(--nn-color-blanco); }
-  .nn-banner__media { position: absolute; inset: 0; }
-  .nn-banner__media img { width: 100%; height: 100%; object-fit: cover; }
-  .nn-banner__content { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 40px; padding-block-end: clamp(40px, 4.5vw, 64px); }
-  .nn-banner__heading { margin: 0; color: inherit; max-width: 16ch; }
-  .nn-banner__heading p { margin: 0; }
-  .nn-banner__button {
-    display: inline-flex; align-items: center; padding: 24px 36px; border-radius: var(--nn-radius-pill);
-    background: var(--nn-color-taupe); color: var(--nn-color-blanco); text-decoration: none;
-    font-size: clamp(1.75rem, 1.3rem + 1.2vw, 3rem); letter-spacing: -0.05em; line-height: 1;
-  }
-  .nn-banner__button:hover { background: color-mix(in srgb, var(--nn-color-taupe) 85%, black); }
-  @media screen and (max-width: 749px) { .nn-banner__button { padding: 16px 28px; } .nn-banner__content { gap: 24px; } }
-{% endstylesheet %}
 
 {% schema %}
 {

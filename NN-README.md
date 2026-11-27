@@ -43,3 +43,23 @@ Horizon files touched (small, marked with `Nuestro Nido` comments):
 - Wishlist heart in the header: waits for the wishlist app (it injects its own icon).
 - Checkout can't use Basis Grotesque off Plus; pick the closest grotesque in checkout branding.
 - Figma has no H2 or Body L: H2 is proposed at 40/28px; confirm with the designer.
+
+## Home, collection and product templates (phase 2)
+
+| File | What it does |
+| --- | --- |
+| `sections/nn-hero.liquid` | Full-bleed hero with display headline (Figma Home top). |
+| `sections/nn-pillars.liquid` + `snippets/nn-pillar-art.liquid` | Mantequilla band: isotipo, title, 4 numbered pillars with line illustrations. |
+| `sections/nn-tiles.liquid` | "Explora por espacio / producto": 5 portrait tiles linking to collections. |
+| `sections/nn-products.liquid` + `snippets/nn-product-card.liquid` | Product rows: `featured` (Piezas destacadas) or `grid` (sets). |
+| `sections/nn-banner.liquid` | Full-bleed image with display headline and taupe pill button. |
+| `sections/nn-reviews.liquid` | Review cards with arrows. Static blocks until a reviews app is installed. |
+| `snippets/nn-card-meta.liquid`, `snippets/nn-stars.liquid` | Badge, measures, 18 MSI chip and rating. Also added to Horizon's product cards (collection + product templates) through Custom Liquid blocks. |
+| `assets/nn-demo-*.jpg` | **Provisional** photos exported from the Figma, used as fallbacks. Delete once real photography is uploaded. |
+
+Product card data lives in product metafields, namespace `nido`: `badge` (e.g. "Entrega 72 hrs", "Set completo"),
+`subtitulo` (measures line), `rating` (decimal) and `rating_count` (integer).
+
+Provisional store content (Nov 2026): 23 products tagged `provisional`, smart collections by tag
+(comedor, cocina, habitacion, sala, oficina, mesas, sillas, sillones-y-sofas, accesorios, paquetes, destacados…)
+and placeholder pages (acerca, airbnb, atencion, mayoreo). Filter products by the `provisional` tag to remove them.

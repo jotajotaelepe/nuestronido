@@ -66,29 +66,6 @@
   })();
 </script>
 
-{% stylesheet %}
-  .nn-reviews { background: var(--nn-reviews-bg, transparent); }
-  .nn-reviews__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; margin-block-end: 48px; }
-  .nn-reviews__eyebrow { margin: 0 0 12px; color: var(--nn-color-gris-600); }
-  .nn-reviews__title { margin: 0; font-size: var(--font-size--h1); font-weight: 400; letter-spacing: -0.06em; line-height: 1.05; }
-  .nn-reviews__summary { display: flex; align-items: center; gap: 14px; }
-  .nn-reviews__avg { font-size: 48px; line-height: 1; letter-spacing: -0.05em; }
-  .nn-reviews__detail { display: flex; flex-direction: column; gap: 6px; color: var(--nn-color-gris-600); margin-inline-end: 26px; }
-  .nn-reviews__arrows { display: flex; gap: 10px; }
-  .nn-reviews__arrow { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--nn-color-linea); background: var(--nn-color-blanco); color: var(--nn-color-tinta); display: grid; place-items: center; cursor: pointer; padding: 0; }
-  .nn-reviews__arrow:hover { border-color: var(--nn-color-tinta); }
-  .nn-reviews__track { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 128px) / 3); gap: 64px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-  .nn-reviews__track::-webkit-scrollbar { display: none; }
-  .nn-review { scroll-snap-align: start; display: flex; flex-direction: column; gap: 16px; }
-  .nn-review__quote { margin: 0 0 38px; font-size: 18px; line-height: 1.6; letter-spacing: -0.02em; }
-  .nn-review__author { display: flex; align-items: center; gap: 14px; margin-block-start: auto; }
-  .nn-review__avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--nn-color-mantequilla); display: grid; place-items: center; font-size: 13px; font-weight: 500; flex: none; }
-  .nn-review__data { display: flex; flex-direction: column; gap: 3px; }
-  .nn-review__name { font-weight: 500; font-size: 14px; }
-  .nn-review__meta { color: var(--nn-color-gris-600); }
-  .nn-review__verified { color: var(--nn-color-verde); font-size: 11px; }
-  @media screen and (max-width: 989px) { .nn-reviews__track { grid-auto-columns: 85%; gap: 24px; } .nn-reviews__summary { width: 100%; } .nn-reviews__arrows { margin-inline-start: auto; } }
-{% endstylesheet %}
 
 {% schema %}
 {
