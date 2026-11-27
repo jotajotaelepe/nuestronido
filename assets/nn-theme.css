@@ -94,14 +94,25 @@ body {
      which loads after this file and stacks every slide in one grid cell. */
   .announcement-bar__slider .announcement-bar__slides {
     display: flex;
-    justify-content: center;
-    gap: 96px;
+    justify-content: space-between;
+    gap: clamp(24px, 4vw, 96px);
     width: 100%;
-    max-width: none;
+    max-width: var(--nn-max-content-width);
+    margin-inline: auto;
+    overflow: visible;
+    transform: none;
   }
 
+  /* Horizon gives every slide text-block--full-width (width: 100%), which made each
+     message a full-width column: size each one to its text instead. */
   .announcement-bar__slider .announcement-bar__slides > * {
     grid-area: auto;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+    --width: auto;
+    white-space: nowrap;
+    transform: none;
   }
 
   .announcement-bar__slider .announcement-bar__slides > .announcement-bar__slide,
@@ -139,9 +150,15 @@ body {
 }
 
 /* Mega menu panel (Figma B–E) */
+/* One flat panel with a hairline, no shadow: Horizon's underlay shadow plus ours stacked into
+   a grey gradient under the open menu. */
 .header .menu-list__submenu {
   border-block-end: 1px solid var(--nn-color-linea);
-  box-shadow: var(--nn-shadow-menu);
+  box-shadow: none;
+}
+
+.header .header__underlay-open::after {
+  box-shadow: none;
 }
 
 .header .mega-menu {
@@ -370,8 +387,15 @@ body {
   border-radius: var(--nn-radius-pill);
 }
 
-.nn-footer__input {
+/* .nn-footer prefix outranks Horizon's input:not([type='checkbox'], [type='radio']) white fill. */
+.nn-footer .nn-footer__input {
   flex: 1 1 auto;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
   min-width: 0;
   height: 100%;
   border: 0;
@@ -383,9 +407,14 @@ body {
   outline: none;
 }
 
-.nn-footer__input::placeholder {
+.nn-footer .nn-footer__input::placeholder {
   color: inherit;
-  opacity: 1;
+  opacity: 0.7;
+}
+
+.nn-footer .nn-footer__input:-webkit-autofill {
+  -webkit-text-fill-color: var(--nn-footer-fg, #fff);
+  transition: background-color 9999s;
 }
 
 .nn-footer__field:focus-within {
